@@ -14,8 +14,6 @@ import ClientHome from "./components/ClientHome";
 import ClientMenu from "./components/ClientMenu";
 import ClientCart from "./components/ClientCart";
 import ClientReservation from "./components/ClientReservation";
-import ClientAuth from "./components/ClientAuth";
-import ClientHistory from "./components/ClientHistory";
 import PaymentSuccess from "./pages/PaymentSuccess";
 import PaymentFailure from "./pages/PaymentFailure";
 import { CartProvider } from "./context/CartContext";

@@ -148,7 +148,7 @@ export const api = {
       const url = `${API_URL}/orders`;
       const res = await fetch(url, {
         method: 'POST',
-        headers: getHeaders(),
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(orderData),
       });
       return handleResponse(res, url);
@@ -178,7 +178,7 @@ export const api = {
       const url = `${API_URL}/reservations`;
       const res = await fetch(url, {
         method: 'POST',
-        headers: getHeaders(),
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(resData),
       });
       return handleResponse(res, url);

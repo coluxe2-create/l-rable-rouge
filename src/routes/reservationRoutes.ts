@@ -4,7 +4,7 @@ import { authenticate, isAdmin } from '../middleware/auth.ts';
 
 const router = Router();
 
-router.post('/', authenticate, createReservation);
+router.post('/', createReservation);
 router.get('/', authenticate, getReservations);
 router.get('/my-reservations', authenticate, getReservations);
 router.patch('/:id/status', authenticate, isAdmin, updateReservationStatus);

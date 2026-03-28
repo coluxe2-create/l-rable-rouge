@@ -31,6 +31,16 @@ export default function ClientReservation({ onNavigate, user }: ClientReservatio
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
 
+  React.useEffect(() => {
+    if (user) {
+      setFormData(prev => ({
+        ...prev,
+        name: `${user.first_name || ''} ${user.last_name || ''}`.trim() || user.email.split('@')[0],
+        phone: user.phone || ''
+      }));
+    }
+  }, [user]);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitting(true);

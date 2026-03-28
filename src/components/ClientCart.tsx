@@ -71,6 +71,13 @@ export default function ClientCart({ onNavigate, user }: ClientCartProps) {
   const [geocoding, setGeocoding] = useState(false);
   const [error, setError] = useState('');
 
+  useEffect(() => {
+    if (user) {
+      setCustomerName(`${user.first_name || ''} ${user.last_name || ''}`.trim() || user.email.split('@')[0]);
+      setPhone(user.phone || '');
+    }
+  }, [user]);
+
   const finalTotal = total + (orderType === 'livraison' ? 15 : 0);
 
   const handleLocationSelect = async (lat: number, lng: number) => {
