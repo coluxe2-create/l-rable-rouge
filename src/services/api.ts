@@ -5,12 +5,17 @@ const getBaseApiUrl = () => {
   let url = (import.meta as any).env.VITE_API_URL || (import.meta as any).env.NEXT_PUBLIC_API_URL || '/api';
   
   // Handle the case where the environment variable might be the string "undefined"
-  if (url === 'undefined') {
-    url = '/api';
+  if (url === 'undefined' || !url) {
+    return '/api';
+  }
+
+  // If it doesn't start with http or / but contains a dot (likely a domain), add https://
+  if (!url.startsWith('http') && !url.startsWith('/') && url.includes('.')) {
+    url = `https://${url}`;
   }
   
-  // If it's a full URL and doesn't end with /api, append it
-  if (url.startsWith('http') && !url.endsWith('/api')) {
+  // If it's a full URL and doesn't contain /api, append it
+  if (url.startsWith('http') && !url.includes('/api')) {
     url = url.endsWith('/') ? `${url}api` : `${url}/api`;
   }
   
