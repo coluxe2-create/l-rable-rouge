@@ -87,7 +87,13 @@ export default function ClientHome({ onNavigate }: ClientHomeProps) {
       )}
 
       {/* Quick Info & Actions Section */}
-      <section className="max-w-7xl mx-auto px-6 relative z-20">
+      <motion.section 
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.8 }}
+        className="max-w-7xl mx-auto px-6 relative z-20"
+      >
         <div className="bg-white border border-border-color p-10 md:p-20 shadow-[0_30px_60px_rgba(232,224,216,0.2)]">
           {/* Info Grid */}
           <div className="grid grid-cols-2 md:grid-cols-3 gap-12 md:gap-16 mb-20">
@@ -132,12 +138,24 @@ export default function ClientHome({ onNavigate }: ClientHomeProps) {
             </button>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Featured Section */}
-      <section className="max-w-7xl mx-auto px-6">
+      <motion.section 
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 1 }}
+        className="max-w-7xl mx-auto px-6"
+      >
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
-          <div className="relative order-2 lg:order-1">
+          <motion.div 
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="relative order-2 lg:order-1"
+          >
             <div className="aspect-[4/5] overflow-hidden border border-border-color p-4 bg-white">
               <img 
                 src="https://res.cloudinary.com/dmgsz5ihe/image/upload/q_auto/f_auto/v1775739165/IMG_8145_copie_vcutf5.webp" 
@@ -146,14 +164,26 @@ export default function ClientHome({ onNavigate }: ClientHomeProps) {
                 referrerPolicy="no-referrer"
               />
             </div>
-            <div className="absolute -bottom-12 -left-12 bg-bg-off-white border border-border-color p-12 hidden md:block max-w-xs">
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+              className="absolute -bottom-12 -left-12 bg-bg-off-white border border-border-color p-12 hidden md:block max-w-xs"
+            >
               <Star className="w-8 h-8 text-accent-red mb-6" />
               <p className="text-main-text font-serif italic text-xl leading-relaxed">
                 "L'excellence culinaire au service de vos sens les plus raffinés."
               </p>
-            </div>
-          </div>
-          <div className="space-y-10 order-1 lg:order-2">
+            </motion.div>
+          </motion.div>
+          <motion.div 
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="space-y-10 order-1 lg:order-2"
+          >
             <span className="text-accent-red font-sans font-medium uppercase tracking-[0.3em] text-[10px]">Notre Philosophie</span>
             <h2 className="text-5xl md:text-6xl font-display italic text-main-text leading-tight">
               Une passion pour le <br/> goût authentique
@@ -177,16 +207,46 @@ export default function ClientHome({ onNavigate }: ClientHomeProps) {
             >
               Explorer l'univers <ChevronRight className="w-4 h-4" />
             </button>
-          </div>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Categories Preview */}
-      <section className="bg-bg-off-white py-32 px-6">
+      <motion.section 
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.8 }}
+        className="bg-bg-off-white py-32 px-6"
+      >
         <div className="max-w-7xl mx-auto text-center mb-24">
-          <span className="text-accent-red font-sans font-medium uppercase tracking-[0.3em] text-[10px] mb-6 block">La Carte</span>
-          <h2 className="text-5xl font-display italic text-main-text mb-6">Nos Spécialités</h2>
-          <p className="text-secondary-text max-w-2xl mx-auto font-serif italic text-lg">Parcourez nos différentes catégories et laissez-vous tenter par nos créations culinaires exclusives.</p>
+          <motion.span 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-accent-red font-sans font-medium uppercase tracking-[0.3em] text-[10px] mb-6 block"
+          >
+            La Carte
+          </motion.span>
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-5xl font-display italic text-main-text mb-6"
+          >
+            Nos Spécialités
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-secondary-text max-w-2xl mx-auto font-serif italic text-lg"
+          >
+            Parcourez nos différentes catégories et laissez-vous tenter par nos créations culinaires exclusives.
+          </motion.p>
         </div>
         <div className="max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-10">
           {[
@@ -197,6 +257,10 @@ export default function ClientHome({ onNavigate }: ClientHomeProps) {
           ].map((cat, i) => (
             <motion.div
               key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
               whileHover={{ y: -15 }}
               className="group cursor-pointer"
               onClick={() => onNavigate('menu')}
@@ -217,14 +281,26 @@ export default function ClientHome({ onNavigate }: ClientHomeProps) {
             </motion.div>
           ))}
         </div>
-      </section>
+      </motion.section>
 
       {/* Additional Story Sections */}
-      <section className="space-y-32 py-32">
+      <motion.section 
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 1 }}
+        className="space-y-32 py-32 overflow-hidden"
+      >
         {/* Section 1 */}
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
-            <div className="order-2 lg:order-1 space-y-8">
+            <motion.div 
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="order-2 lg:order-1 space-y-8"
+            >
               <span className="text-accent-red font-sans font-medium uppercase tracking-[0.3em] text-[10px]">L'Art de la Table</span>
               <h2 className="text-4xl md:text-5xl font-display italic text-main-text leading-tight">
                 Une atmosphère <br/> élégante et chaleureuse
@@ -232,8 +308,14 @@ export default function ClientHome({ onNavigate }: ClientHomeProps) {
               <p className="text-secondary-text leading-relaxed text-lg font-serif italic">
                 À L'Érable Rouge, chaque détail compte. Notre décoration allie élégance moderne et touches traditionnelles pour créer une atmosphère chaleureuse et raffinée, idéale pour vos moments d'exception.
               </p>
-            </div>
-            <div className="order-1 lg:order-2">
+            </motion.div>
+            <motion.div 
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="order-1 lg:order-2"
+            >
               <div className="aspect-[16/10] overflow-hidden border border-border-color p-4 bg-white">
                 <img 
                   src="https://res.cloudinary.com/dmgsz5ihe/image/upload/q_auto/f_auto/v1775739162/IMG_8130_copie_lsweam.webp" 
@@ -242,14 +324,20 @@ export default function ClientHome({ onNavigate }: ClientHomeProps) {
                   referrerPolicy="no-referrer"
                 />
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
 
         {/* Section 2 */}
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
-            <div className="order-1">
+            <motion.div 
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="order-1"
+            >
               <div className="aspect-[16/10] overflow-hidden border border-border-color p-4 bg-white">
                 <img 
                   src="https://res.cloudinary.com/dmgsz5ihe/image/upload/q_auto/f_auto/v1775739145/IMG_8131-Avec_accentuation-NR_copie_llapdx.webp" 
@@ -258,8 +346,14 @@ export default function ClientHome({ onNavigate }: ClientHomeProps) {
                   referrerPolicy="no-referrer"
                 />
               </div>
-            </div>
-            <div className="order-2 space-y-8">
+            </motion.div>
+            <motion.div 
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="order-2 space-y-8"
+            >
               <span className="text-accent-red font-sans font-medium uppercase tracking-[0.3em] text-[10px]">Une Expérience Unique</span>
               <h2 className="text-4xl md:text-5xl font-display italic text-main-text leading-tight">
                 Un voyage culinaire <br/> au cœur d'Agadir
@@ -267,14 +361,20 @@ export default function ClientHome({ onNavigate }: ClientHomeProps) {
               <p className="text-secondary-text leading-relaxed text-lg font-serif italic">
                 Découvrez une cuisine qui raconte une histoire. Nos plats sont conçus pour éveiller vos sens et vous transporter dans un voyage culinaire inoubliable, où les saveurs du Maroc sont sublimées.
               </p>
-            </div>
+            </motion.div>
           </div>
         </div>
 
         {/* Section 3 */}
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
-            <div className="order-2 lg:order-1 space-y-8">
+            <motion.div 
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="order-2 lg:order-1 space-y-8"
+            >
               <span className="text-accent-red font-sans font-medium uppercase tracking-[0.3em] text-[10px]">Savoir-Faire & Tradition</span>
               <h2 className="text-4xl md:text-5xl font-display italic text-main-text leading-tight">
                 L'excellence dans <br/> chaque assiette
@@ -282,8 +382,14 @@ export default function ClientHome({ onNavigate }: ClientHomeProps) {
               <p className="text-secondary-text leading-relaxed text-lg font-serif italic">
                 Notre engagement envers la qualité se reflète dans chaque assiette. Nous honorons les recettes ancestrales tout en y apportant une touche de créativité contemporaine pour ravir les palais les plus exigeants.
               </p>
-            </div>
-            <div className="order-1 lg:order-2">
+            </motion.div>
+            <motion.div 
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="order-1 lg:order-2"
+            >
               <div className="aspect-[16/10] overflow-hidden border border-border-color p-4 bg-white">
                 <img 
                   src="https://res.cloudinary.com/dmgsz5ihe/image/upload/q_auto/f_auto/v1775739165/IMG_8145_copie_vcutf5.webp" 
@@ -292,10 +398,10 @@ export default function ClientHome({ onNavigate }: ClientHomeProps) {
                   referrerPolicy="no-referrer"
                 />
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
-      </section>
+      </motion.section>
     </div>
   );
 }
