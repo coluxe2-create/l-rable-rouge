@@ -39,8 +39,8 @@ export default function ClientHome({ onNavigate }: ClientHomeProps) {
       <section className="relative h-[90vh] flex items-center justify-center overflow-hidden bg-white">
         <div className="absolute inset-0">
           <img 
-            src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=80&w=2000" 
-            alt="Restaurant interior" 
+            src="https://res.cloudinary.com/dmgsz5ihe/image/upload/q_auto/f_auto/v1775736611/WhatsApp_Image_2026-04-07_at_20.31.43_nrwy5t.jpg" 
+            alt="L'Érable Rouge - Accueil" 
             className="w-full h-full object-cover opacity-100"
             referrerPolicy="no-referrer"
           />
